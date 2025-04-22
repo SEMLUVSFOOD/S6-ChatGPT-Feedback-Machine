@@ -13,23 +13,33 @@ function form_learning_outcome_1_shortcode() {
 
     $criteria = [
         "User Research & Use of Technology" => [
-            "Extensive research using 3+ methods. 2+ advanced technologies explored and critically applied.",
-            "2 methods used with valid insights. 1 relevant technology applied meaningfully.",
-            "1 method with limited insights. Technology mentioned, unclear application.",
-            "Minimal research, mostly assumptions. Technology mentioned but unused.",
-            "No research or technology present."
+            // 4 - Advanced
+            "Consistently uses 3+ qualitative and/or quantitative methods across projects (e.g. interviews, observations, expert input, field research). Creates clear personas, identifies user pain points, explores 2+ new or relevant technologies and applies them critically to context.",
+            // 3 - Proficient
+            "Uses multiple methods in most projects. Delivers solid user insights and applies at least 1 relevant technology meaningfully. Shows good awareness of user needs and project context.",
+            // 2 - Beginning
+            "Uses 1–2 basic methods (e.g. a survey or a single interview). Identifies some user needs. Mentions a relevant technology and tries to apply it in a limited or early way.",
+            // 1 - Orienting
+            "Starts using research (e.g. simple desk research or short user interaction). Understands basic user needs. Technology is explored but not clearly applied.",
+            // 0 - Undefined
+            "No user research performed. No analysis of technology or user needs available."
         ],
         "Design Process & Advice Communication" => [
-            "Iterative process, multiple versions, well-argued, visual advice tailored to stakeholders.",
-            "Process followed with iteration. Advice understandable and supported.",
-            "Process present but not consistent. Advice is vague.",
-            "Unclear or random process. Advice confusing.",
-            "No process or advice provided."
+            // 4 - Advanced
+            "Chooses an appropriate design process tailored to the project. Shows full documentation of multiple iterations. Advice is clear, visual, justified and tailored to stakeholders (e.g. through deliverables like POCs or concept videos).",
+            // 3 - Proficient
+            "Follows a structured process with at least one clear iteration. Advice is understandable and based on research. Feedback is addressed and reflected upon in documentation.",
+            // 2 - Beginning
+            "Applies a simple process (e.g. double diamond or HCD steps). Shows some logical steps and early advice based on limited user input or prototype. Advice is somewhat generic.",
+            // 1 - Orienting
+            "Shows an early start of a design process, but unclear structure or goals. Advice is short, basic, or not yet grounded in research.",
+            // 0 - Undefined
+            "No process or advice is shown. No communication of insights or decisions."
         ]
-    ];
+    ];    
 
     echo "<form method='post' style='margin-top:0; padding-top:0;'>";
-    echo "<table style='width:100%; border-collapse: collapse; margin-top:0; padding-top:0;' border='1'>";    
+    echo "<table style='width:100%; border-collapse: collapse; font-size: 13px;' border='1'>";
     echo "<tr>
             <th>Criteria</th>
             <th>4 - Advanced</th>
@@ -56,7 +66,7 @@ function form_learning_outcome_1_shortcode() {
         echo "      </select>
                 </label><br><br>
                 <label>Feedback:</label><br>
-                <textarea name='{$field_key}_feedback' rows='4' cols='30' required></textarea>
+                <textarea name='{$field_key}_feedback' rows='4' cols='30' style='font-size: 13px;' required></textarea>
               </td>";
         echo "</tr>";
     }
@@ -66,11 +76,11 @@ function form_learning_outcome_1_shortcode() {
     echo "</form>";
 
     if (isset($_POST['submit_lo1'])) {
-        $prompt = "You are an ICT teacher writing student feedback for a portfolio review.\n\n";
-        $prompt .= "Below is your feedback on two criteria from Learning Outcome 1.\n";
-        $prompt .= "Write one clear, short paragraph as if written by the teacher, in plain and supportive language.\n";
-        $prompt .= "Then suggest a final score (label only) for the overall learning outcome using this scale:\n";
-        $prompt .= "0 = Undefined, 1 = Orienting, 2 = Beginning, 3 = Proficient, 4 = Advanced.\n\n";
+        $prompt = "You are an ICT teacher reviewing a student's work. Based on the feedback for each criterion below, rewrite the feedback in a clear, professional tone — as if written by the teacher directly to the student.\n";
+        $prompt .= "Keep the content largely the same, but improve structure, grammar, and clarity. Do not shorten or overly summarize.\n";
+        $prompt .= "At the end, provide a final score for Learning Outcome 1 using this scale:\n";
+        $prompt .= "0 = Undefined, 1 = Orienting, 2 = Beginning, 3 = Proficient, 4 = Advanced\n\n";
+        
 
         foreach ($criteria as $criterion => $desc) {
             $field_key = strtolower(str_replace(' ', '_', $criterion));
