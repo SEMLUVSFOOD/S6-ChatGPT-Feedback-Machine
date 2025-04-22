@@ -72,7 +72,7 @@ function form_learning_outcome_1_shortcode() {
     }
 
     echo "</table><br>";
-    echo "<input type='submit' name='submit_lo1' value='Generate Student Summary'>";
+    echo "<input type='submit' class='submitButton' name='submit_lo1' value='Calculate Result and Generate Feedback (Summary) 👨‍🎓'>";
     echo "</form>";
 
     if (isset($_POST['submit_lo1'])) {
