@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name: ChatGPT LO1 Feedback Form (Student Style Output)
-Description: LO1 form with teacher-style summary and final score label.
-Version: 1.2
+Plugin Name: ChatGPT LO's Feedback Form
+Description: LO's rubriks with teacher-style summary and final score label using ChatGPT.
+Version: 1.3
 Author: You
 */
 
@@ -80,7 +80,7 @@ function form_learning_outcome_1_shortcode() {
         $prompt .= "Format your reply like this:\n";
         $prompt .= "Final Score: [0–4] – [Label]\nFeedback: [Short, rewritten summary to student]\n";
 
-        $response = chatgpt_get_response_lo1($prompt);
+        $response = chatgpt_get_response($prompt);
 
         // 👇 Store response in session
         session_start();
@@ -155,7 +155,7 @@ function form_learning_outcome_2_shortcode() {
         $prompt .= "Format your reply like this:\n";
         $prompt .= "Final Score: [0–4] – [Label]\nFeedback: [Rewritten feedback for student]\n";
 
-        $response = chatgpt_get_response_lo1($prompt); // using same function as LO1
+        $response = chatgpt_get_response($prompt); // using same function as LO1
         
         // 👇 Store response in session
         session_start();
@@ -230,7 +230,7 @@ function form_learning_outcome_3_shortcode() {
         $prompt .= "Format your reply like this:\n";
         $prompt .= "Final Score: [0–4] – [Label]\nFeedback: [Rewritten feedback for student]\n";
 
-        $response = chatgpt_get_response_lo1($prompt); // reused from LO1
+        $response = chatgpt_get_response($prompt); // reused from LO1
 
         // 👇 Store response in session
         session_start();
@@ -305,7 +305,7 @@ function form_learning_outcome_4_shortcode() {
         $prompt .= "Format your reply like this:\n";
         $prompt .= "Final Score: [0–4] – [Label]\nFeedback: [Rewritten feedback for student]\n";
 
-        $response = chatgpt_get_response_lo1($prompt); // using shared function from LO1
+        $response = chatgpt_get_response($prompt); // using shared function from LO1
 
         // 👇 Store response in session
         session_start();
@@ -380,7 +380,7 @@ function form_learning_outcome_5_shortcode() {
         $prompt .= "Format your reply like this:\n";
         $prompt .= "Final Score: [0–4] – [Label]\nFeedback: [Rewritten feedback for student]\n";
 
-        $response = chatgpt_get_response_lo1($prompt); // reuse shared function
+        $response = chatgpt_get_response($prompt); // reuse shared function
 
         // 👇 Store response in session
         session_start();
@@ -445,7 +445,7 @@ function learning_outcomes_conclusion_shortcode() {
         $prompt .= "Format your output like this:\n";
         $prompt .= "Final Evaluation: [Average Score] – [Label]\nFeedback: [Short, final paragraph combining all feedback and giving overall advice]\n";
 
-        $response = chatgpt_get_response_lo1($prompt); // reuse shared function
+        $response = chatgpt_get_response($prompt); // reuse shared function
 
         // Add formatting
         $formatted = preg_replace('/(Final Evaluation:)/i', '<strong>$1</strong>', $response);
@@ -460,7 +460,7 @@ function learning_outcomes_conclusion_shortcode() {
 }
 
 
-function chatgpt_get_response_lo1($prompt) {
+function chatgpt_get_response($prompt) {
     require_once plugin_dir_path(__FILE__) . 'secret-config.php';
     $api_key = CHATGPT_API_KEY;
 
