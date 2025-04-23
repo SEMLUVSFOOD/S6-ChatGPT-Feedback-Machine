@@ -8,6 +8,14 @@ Author: You
 
 session_start(); // Put this at the very top of the plugin file if not already there
 
+define("FEEDBACK_PROMPT", "You are an ICT teacher reviewing a student's performance on Learning Outcome 5. The teacher gave feedback and a score for each of the 3 criteria below.\n" .
+"Combine these into a single, cohesive paragraph of feedback as if written directly by the teacher to the student. The goal is to make the feedback sound supportive, structured, and professional — not overly summarized.\n" .
+"Keep most of the content but improve grammar, flow, and tone.\n" .
+"Then calculate the average of the scores (round to the nearest whole number), and return the final result as a label from the scale:\n" .
+"0 = Undefined, 1 = Orienting, 2 = Beginning, 3 = Proficient, 4 = Advanced\n\n" .
+"Format your output like this:\n" .
+"Final Score: [0–4] – [Label]\nFeedback: [Single paragraph combining both criteria]\n");
+
 add_shortcode('form_learning_outcome_1', 'form_learning_outcome_1_shortcode');
 
 function form_learning_outcome_1_shortcode() {
@@ -78,14 +86,7 @@ function form_learning_outcome_1_shortcode() {
     echo "</form>";
 
     if (isset($_POST['submit_lo1'])) {
-        $prompt = "You are an ICT teacher reviewing a student's performance on Learning Outcome 5. The teacher gave feedback and a score for each of the 2 criteria below.\n";
-        $prompt .= "Combine these into a single, cohesive paragraph of feedback as if written directly by the teacher to the student. The goal is to make the feedback sound supportive, structured, and professional — not overly summarized.\n";
-        $prompt .= "Keep most of the content but improve grammar, flow, and tone.\n";
-        $prompt .= "Then calculate the average of the scores (round to the nearest whole number), and return the final result as a label from the scale:\n";
-        $prompt .= "0 = Undefined, 1 = Orienting, 2 = Beginning, 3 = Proficient, 4 = Advanced\n\n";
-        $prompt .= "Format your output like this:\n";
-        $prompt .= "Final Score: [0–4] – [Label]\nFeedback: [Single paragraph combining both criteria]\n";
-        
+        $prompt = FEEDBACK_PROMPT;
 
         foreach ($criteria as $criterion => $desc) {
             $field_key = strtolower(str_replace(' ', '_', $criterion));
@@ -184,13 +185,7 @@ function form_learning_outcome_2_shortcode() {
     echo "</form>";
 
     if (isset($_POST['submit_lo2'])) {
-        $prompt = "You are an ICT teacher reviewing a student's performance on Learning Outcome 5. The teacher gave feedback and a score for each of the 2 criteria below.\n";
-        $prompt .= "Combine these into a single, cohesive paragraph of feedback as if written directly by the teacher to the student. The goal is to make the feedback sound supportive, structured, and professional — not overly summarized.\n";
-        $prompt .= "Keep most of the content but improve grammar, flow, and tone.\n";
-        $prompt .= "Then calculate the average of the scores (round to the nearest whole number), and return the final result as a label from the scale:\n";
-        $prompt .= "0 = Undefined, 1 = Orienting, 2 = Beginning, 3 = Proficient, 4 = Advanced\n\n";
-        $prompt .= "Format your output like this:\n";
-        $prompt .= "Final Score: [0–4] – [Label]\nFeedback: [Single paragraph combining both criteria]\n";
+        $prompt = FEEDBACK_PROMPT;
 
         foreach ($criteria as $criterion => $desc) {
             $field_key = strtolower(str_replace(' ', '_', $criterion));
@@ -288,13 +283,7 @@ function form_learning_outcome_3_shortcode() {
     echo "</form>";
 
     if (isset($_POST['submit_lo3'])) {
-        $prompt = "You are an ICT teacher reviewing a student's performance on Learning Outcome 5. The teacher gave feedback and a score for each of the 2 criteria below.\n";
-        $prompt .= "Combine these into a single, cohesive paragraph of feedback as if written directly by the teacher to the student. The goal is to make the feedback sound supportive, structured, and professional — not overly summarized.\n";
-        $prompt .= "Keep most of the content but improve grammar, flow, and tone.\n";
-        $prompt .= "Then calculate the average of the scores (round to the nearest whole number), and return the final result as a label from the scale:\n";
-        $prompt .= "0 = Undefined, 1 = Orienting, 2 = Beginning, 3 = Proficient, 4 = Advanced\n\n";
-        $prompt .= "Format your output like this:\n";
-        $prompt .= "Final Score: [0–4] – [Label]\nFeedback: [Single paragraph combining both criteria]\n";
+        $prompt = FEEDBACK_PROMPT;
 
         foreach ($criteria as $criterion => $desc) {
             $field_key = strtolower(str_replace(' ', '_', $criterion));
@@ -392,13 +381,7 @@ function form_learning_outcome_4_shortcode() {
     echo "</form>";
 
     if (isset($_POST['submit_lo4'])) {
-        $prompt = "You are an ICT teacher reviewing a student's performance on Learning Outcome 5. The teacher gave feedback and a score for each of the 2 criteria below.\n";
-        $prompt .= "Combine these into a single, cohesive paragraph of feedback as if written directly by the teacher to the student. The goal is to make the feedback sound supportive, structured, and professional — not overly summarized.\n";
-        $prompt .= "Keep most of the content but improve grammar, flow, and tone.\n";
-        $prompt .= "Then calculate the average of the scores (round to the nearest whole number), and return the final result as a label from the scale:\n";
-        $prompt .= "0 = Undefined, 1 = Orienting, 2 = Beginning, 3 = Proficient, 4 = Advanced\n\n";
-        $prompt .= "Format your output like this:\n";
-        $prompt .= "Final Score: [0–4] – [Label]\nFeedback: [Single paragraph combining both criteria]\n";
+        $prompt = FEEDBACK_PROMPT;
 
         foreach ($criteria as $criterion => $desc) {
             $field_key = strtolower(str_replace(' ', '_', $criterion));
@@ -508,14 +491,7 @@ function form_learning_outcome_5_shortcode() {
     echo "</form>";
 
     if (isset($_POST['submit_lo5'])) {
-        $prompt = "You are an ICT teacher reviewing a student's performance on Learning Outcome 5. The teacher gave feedback and a score for each of the 3 criteria below.\n";
-        $prompt .= "Combine these into a single, cohesive paragraph of feedback as if written directly by the teacher to the student. The goal is to make the feedback sound supportive, structured, and professional — not overly summarized.\n";
-        $prompt .= "Keep most of the content but improve grammar, flow, and tone.\n";
-        $prompt .= "Then calculate the average of the scores (round to the nearest whole number), and return the final result as a label from the scale:\n";
-        $prompt .= "0 = Undefined, 1 = Orienting, 2 = Beginning, 3 = Proficient, 4 = Advanced\n\n";
-        $prompt .= "Format your output like this:\n";
-        $prompt .= "Final Score: [0–4] – [Label]\nFeedback: [Single paragraph combining both criteria]\n";
-        
+        $prompt = FEEDBACK_PROMPT;
 
         foreach ($criteria as $criterion => $desc) {
             $field_key = strtolower(str_replace(' ', '_', $criterion));
