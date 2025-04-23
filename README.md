@@ -37,3 +37,20 @@ You need a valid API key from OpenAI to use the plugin's AI-powered feedback fea
    ```php
    <?php
    define('CHATGPT_API_KEY', 'your-api-key-here');
+
+## Usage
+
+### Adding the Form to Pages or Posts
+
+To add the feedback form for each learning outcome to a page or post, use the following shortcodes:
+
+- **Learning Outcome 1**:
+  ```plaintext
+  [form_learning_outcome_1]
+  [form_learning_outcome_2]
+  [form_learning_outcome_3]
+  [form_learning_outcome_4]
+  [form_learning_outcome_5]
+  [learning_outcomes_conclusion]
+
+
