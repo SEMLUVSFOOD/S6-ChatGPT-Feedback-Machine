@@ -51,3 +51,5 @@ wp-config.php
 
 
 /wp-content/plugins/chatgpt-api/secret-config.php
+/wp-content/plugins/chatgpt-LO-sorter/secret-config.php
+
