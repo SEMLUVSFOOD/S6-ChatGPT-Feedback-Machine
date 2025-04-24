@@ -117,28 +117,29 @@ function analyze_evidence_with_chatgpt($evidence_text) {
     $api_key = CHATGPT_API_KEY;
 
     // Construct a clear and detailed description for each Learning Outcome (LO)
-    $prompt = "Analyze the following evidence text and assign it to the appropriate learning outcomes (strict and concise). Only provide the relevant LOs and a brief explanation of 1-2 sentences per LO. Each LO should be formatted like this:\n\n";
+    $prompt = "Analyze the following evidence text and determine which Learning Outcomes (LOs) it addresses. Be strict but thoughtful. Only include the LOs that are clearly demonstrated in the evidence. For each included LO, provide a short but meaningful explanation (2–4 sentences) explaining how the evidence supports it. Use the format below for each relevant LO:\n\n";
 
-    // Detailed descriptions of each LO
+    // Expanded descriptions of each LO
+
     $prompt .= "<strong>LO1: User interaction (analyse & advise)</strong><br>";
-    $prompt .= "This outcome involves analyzing the user, their needs, behaviors, and experiences. It also includes advising on user experience (UX) interventions based on research and design principles.<br><br>";
+    $prompt .= "This learning outcome is demonstrated when the student deeply investigates users, their behaviors, and the context in which the system will be used. The student uses qualitative and quantitative research methods, observes users in real environments, and explores cutting-edge technologies that could be relevant to the problem. A strong UX design process is used—clearly documented and iteratively refined—to advise stakeholders with well-substantiated insights. The advice is communicated in a way that helps stakeholders understand their options and make informed decisions, ideally through early concepts, POCs, or user-driven insights.<br><br>";
 
     $prompt .= "<strong>LO2: User interaction (execution & validation)</strong><br>";
-    $prompt .= "This outcome focuses on executing and evaluating the user experience of an interactive product. It includes validating the design decisions based on user feedback and usability tests.<br><br>";
+    $prompt .= "This outcome is reflected in the creation and evaluation of interactive solutions, including prototypes, POCs, or MVPs. These are developed in iterations and used for testing, not just to showcase progress but as tools for learning through feedback from real users. A strong demonstration of this LO includes multiple usability tests, mapping of the entire UX journey, and the ability to reflect on and adjust design decisions. Documentation of the process and active communication with stakeholders are essential for validation.<br><br>";
 
     $prompt .= "<strong>LO3: Realisation of technical products</strong><br>";
-    $prompt .= "This outcome applies to evidence involving the creation of technical products. It includes the use of programming languages, frameworks, or tools to build products and systems.<br><br>";
+    $prompt .= "This outcome applies when the student shows technical creation of software or digital products using appropriate tools, frameworks, or libraries. It’s not just about building something—it’s about planning it technically, mapping requirements, using version control effectively, and meeting agreed-upon quality standards like scalability, security, or performance. Evidence should include schematics or code documentation, clear descriptions of technical decisions, and reflections on the student's contribution if working in a team. Prototypes evolve through iterations, and the student demonstrates both technical capability and strategic thinking.<br><br>";
 
     $prompt .= "<strong>LO4: Professional standard</strong><br>";
-    $prompt .= "This outcome involves demonstrating responsibility, ethical behavior, and professionalism in the workplace. It includes meeting deadlines, maintaining quality, and communicating effectively with stakeholders.<br><br>";
+    $prompt .= "This learning outcome is achieved when the student takes clear ownership of their work, applies appropriate research methods, and makes considered, future-focused decisions even in complex or uncertain situations. The student plans their process carefully, works iteratively, and considers ethical, sustainable, and intercultural dimensions of their work. Good evidence for this LO includes detailed planning, critical reflection, stakeholder communication, and clear documentation of how and why decisions were made. It also includes how feedback was gathered and applied during the project.<br><br>";
 
     $prompt .= "<strong>LO5: Personal leadership</strong><br>";
-    $prompt .= "This outcome focuses on personal growth, goal setting, and leadership in your own development. It includes taking responsibility for your tasks, demonstrating initiative, and managing your time and work independently.<br><br>";
+    $prompt .= "This outcome is about showing initiative, responsibility, and long-term professional development. It includes setting personal goals, reflecting on one’s progress, and actively seeking out growth opportunities. A student demonstrating this LO doesn't wait for instructions—they proactively shape their learning path, make appointments with relevant people, and adjust their goals when needed. Evidence should show independent decision-making, vision for one’s future in ICT, and documentation of how these actions contribute to both personal and project-level success.<br><br>";
 
-    $prompt .= "Please analyze the following evidence:\n";
+    $prompt .= "Now, please analyze the following evidence:\n";
     $prompt .= "{$evidence_text}\n\n";
 
-    $prompt .= "Important: Please ensure that each relevant LO is mentioned and followed by a brief explanation (1-2 sentences). If an LO does not apply to the evidence, **do not include it**. Only include the relevant LOs.\n";
+    $prompt .= "Important: Only include relevant LOs. For each, provide a 2–4 sentence explanation of how the evidence supports it. Do **not** list LOs that are not clearly demonstrated by the evidence.\n";
 
     // API request to ChatGPT with the correct endpoint and message format
     $response = wp_remote_post('https://api.openai.com/v1/chat/completions', [
