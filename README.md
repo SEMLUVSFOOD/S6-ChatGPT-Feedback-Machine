@@ -33,7 +33,7 @@ You need a valid API key from OpenAI to use the plugin's AI-powered feedback fea
 
 1. Create an OpenAI account if you don't have one: [OpenAI](https://beta.openai.com/signup/)
 2. Once logged in, navigate to the **API Keys** section and generate a new key.
-3. **Important**: Place the API key in the `secret-config.php` file, which **should not be committed to version control (Git)**. The `secret-config.php` file is located in the plugin directory:
+3. **Important**: Create a Place `secret-config.php` in the wp-content/plugins/chatgpt-api folder. Then put the API key in the file, which **should not be committed to version control (Git)**. The `secret-config.php` shoyld look like this:
    ```php
    <?php
    define('CHATGPT_API_KEY', 'your-api-key-here');
