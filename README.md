@@ -44,7 +44,6 @@ You need a valid API key from OpenAI to use the plugin's AI-powered feedback fea
 
 To add the feedback form for each learning outcome to a page or post, use the following shortcodes:
 
-- **Learning Outcome 1**:
   ```plaintext
   [form_learning_outcome_1]
   [form_learning_outcome_2]
